@@ -10,3 +10,13 @@ gem 'jquery-rails'
 gem "haml", ">= 3.1.6"
 gem "haml-rails", ">= 0.3.4", :group => :development
 gem "bootstrap-sass", ">= 2.0.4.0"
+
+gem 'mongoid'
+gem 'crack'
+
+group :test, :development do
+  gem 'database_cleaner'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'mongoid-rspec'
+end

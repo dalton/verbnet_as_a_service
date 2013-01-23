@@ -1,0 +1,23 @@
+%h1= @vc.name
+
+%h2 Members
+%ul
+  - @vc.members.asc(:name).each do |member|
+    %li= member.name
+
+
+%h2 Roles
+%ul
+  - @vc.thematic_roles.asc(:name).each do |role|
+    %li= role.name
+
+%h2 Frames
+- @vc.frames.each do |frame|
+  %div
+    %div= frame.description.primary
+    - frame.examples.each do |ex|
+      %div= ex.text
+    - frame.syntax.syntactic_units.each do |su|
+      %div= su
+
+
