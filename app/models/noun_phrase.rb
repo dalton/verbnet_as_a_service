@@ -4,7 +4,6 @@ class NounPhrase < SyntacticUnit
   embeds_one :selectional_restriction
   embeds_many :syntactic_restrictions
 
-
   def to_s
     value
   end
