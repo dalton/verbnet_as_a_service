@@ -4,5 +4,4 @@ class Frame
   embeds_many :examples
   embeds_one :syntax
   embeds_one :semantics
-
 end
