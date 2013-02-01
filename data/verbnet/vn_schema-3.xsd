@@ -322,45 +322,107 @@
 
   <xsd:simpleType name="selrestrType">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="scalar"/>
-      <xsd:enumeration value="concrete"/>
-      <xsd:enumeration value="abstract"/>
-      <xsd:enumeration value="location"/>
-      <xsd:enumeration value="organization"/>
-      <xsd:enumeration value="currency"/>
-      <xsd:enumeration value="idea"/>
-      <xsd:enumeration value="sound"/>
-      <xsd:enumeration value="communication"/>
-      <xsd:enumeration value="quotation"/>
-      <xsd:enumeration value="region"/>
-      <xsd:enumeration value="place"/>
-      <xsd:enumeration value="concrete"/>
-      <xsd:enumeration value="company"/>
-      <xsd:enumeration value="natural"/>
-      <xsd:enumeration value="phys_obj"/>
-      <xsd:enumeration value="plant"/>
-      <xsd:enumeration value="animal"/>
-      <xsd:enumeration value="human"/>
-      <xsd:enumeration value="animate"/>
-      <xsd:enumeration value="body_part"/>
-      <xsd:enumeration value="comestible"/>
-      <xsd:enumeration value="artifact"/>
-      <xsd:enumeration value="tool"/>
-      <xsd:enumeration value="garment"/>
-      <xsd:enumeration value="machine"/>
-      <xsd:enumeration value="int_control"/>
-      <xsd:enumeration value="force"/>
-      <xsd:enumeration value="vehicle"/>
-      <xsd:enumeration value="substance"/>
-      <xsd:enumeration value="solid"/>
-      <xsd:enumeration value="elongated"/>
-      <xsd:enumeration value="pointy"/>
+      <xsd:enumeration value="root"/>
+      <xsd:enumeration value="scalar" parent="root">
+        <wn>scalar%1:09:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="concrete" parent="root"/>
+      <xsd:enumeration value="abstract" parent="root">
+        <wn>abstract%1:09:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="location" parent="root">
+        <wn>location%1:03:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="organization" parent="root">
+        <wn>organization%1:14:00::</wn>
+        <wn>group%1:03:00</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="currency" parent="root">
+        <wn>currency%1:21:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="idea" parent="abstract">
+        <wn>idea%1:09:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="sound" parent="abstract">
+        <wn>sound%1:07:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="communication" parent="abstract">
+        <wn>communication%1:10:01::</wn>
+        <wn>communication%1:03:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="quotation" parent="root"/>
+      <xsd:enumeration value="region" parent="location">
+        <wn>region%1:15:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="place" parent="location">
+        <wn>place%1:15:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="concrete" parent="root">
+        <wn>concrete%1:27:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="company" parent="organization"/>
+      <xsd:enumeration value="natural" parent="concrete"/>
+      <xsd:enumeration value="phys_obj" parent="concrete"/>
+      <xsd:enumeration value="plant" parent="natural">
+        <wn>plant%1:03:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="animal" parent="animate">
+        <wn>animal%1:03:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="human" parnet="animate">
+        <wn>human%1:05:00::</wn>
+        <wn>person%1:03:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="animate" parent='natural'>
+        <wn>being%1:03:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="body_part" parent="animate">
+        <wn>body_part%1:08:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="comestible" parent="phys_obj">
+        <wn>food%1:03:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="artifact" parent="phys_obj">
+        <wn>artifact%1:03:00</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="tool" parent='artifact'>
+        <wn>tool%1:06:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="garment" parent="artifact">
+        <wn>garment%1:06:00::</wn>
+        <wn>clothing%1:06:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="machine" parent='artifact'>
+        <wn>machine%1:06:00::</wn>
+        <wn>machine%1:06:01::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="int_control" parent="concrete"/>
+      <xsd:enumeration value="force" parent="int_control">
+        <wn>force%1:07:01::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="vehicle" parent="machine">
+        <wn>vehicle%1:06:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="substance" parent="concrete">
+        <wn>substance%1:03:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="solid" parent="concrete">
+        <wn>solid%1:26:00::</wn>
+      </xsd:enumeration>
+      <xsd:enumeration value="elongated" parent="solid"/>
+      <xsd:enumeration value="pointy" parent="solid"/>
       <xsd:enumeration value="refl"/>
-      <xsd:enumeration value="rigid"/>
-      <xsd:enumeration value="nonrigid"/>
-      <xsd:enumeration value="state"/>
+      <xsd:enumeration value="rigid" parent="solid"/>
+      <xsd:enumeration value="nonrigid" parent="solid"/>
+      <xsd:enumeration value="state" parent="root">
+        <wn>state%1:15:01::</wn>
+      </xsd:enumeration>
       <xsd:enumeration value="plural"/>
-      <xsd:enumeration value="time"/>
+      <xsd:enumeration value="time" parent="root">
+        <wn>time%1:11:00::</wn>
+        <wn>time%1:28:05::</wn>
+        <wn>time%1:28:00::</wn>
+      </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
 

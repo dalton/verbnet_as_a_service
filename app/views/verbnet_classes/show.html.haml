@@ -9,7 +9,7 @@
 %h2 Roles
 %ul
   - @vc.thematic_roles.asc(:name).each do |role|
-    %li= role.name
+    %li= "#{role.name} #{role.selectional_restriction}"
 
 %h2 Frames
 - @vc.frames.each do |frame|

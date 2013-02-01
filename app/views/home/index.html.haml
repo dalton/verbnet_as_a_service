@@ -1,4 +1,6 @@
 %h3 Home
 
+= button_to "Ingest", ingest_path
+
 - @classes.each do |c|
   %p= link_to c.name, c

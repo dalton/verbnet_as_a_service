@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "to_xml" do
   it "should reproduce the VerbNet XML" do
 
-    files = Dir.glob("./data/verbnet/*.xml")
+    files = Dir.glob("./data/verbnet/steal-10.5.xml")
     f = open files[0]
 
     x = Crack::XML.parse f

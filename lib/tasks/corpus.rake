@@ -1,12 +1,20 @@
-require_relative '../../app/ingesters/verbnet_class_ingester'
-
-
 namespace :corpus do
   desc "ingest verbnet"
   task :ingest => :environment do
     require 'crack'
-    VerbnetClass.delete_all
+    puts "Ingesting Selectional Restriction Types"
+    SelectionalRestrictionType.delete_all
+    f = "./data/verbnet/vn_schema-3.xsd"
+    file = open f
+    data = Crack::XML.parse file
+
+    data['xsd:schema']['xsd:simpleType'][6]['xsd:restriction']['xsd:enumeration'].each do |srt|
+      puts srt
+      SelectionalRestrictionType.create(value: srt["value"], parent: srt["parent"], senses: srt["wn"].to_a)
+    end
+
     puts "Ingesting VerbNet Classes"
+    VerbnetClass.delete_all
     files = Dir.glob("./data/verbnet/*.xml")
     files.each do |f|
       file = open f
@@ -36,7 +44,7 @@ namespace :corpus do
       new_text = new_text.gsub(/<\/LEX/, '</SU')
       new_text = new_text.gsub(/<VERB/, '<SU type="VERB" ')
 
-      File.open(file_name, "w") {|file| file.puts new_text}
+      File.open(file_name, "w") { |file| file.puts new_text }
     end
   end
 
