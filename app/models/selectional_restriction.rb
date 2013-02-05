@@ -7,8 +7,7 @@ class SelectionalRestriction
 
   def to_s
     return "#{value}#{type}" unless child_selectional_restrictions.any?
-
-    "[#{child_selectional_restrictions.map{|sr| sr.to_s}.join(" #{symbol logic} ")}]"
+    "[#{child_selectional_restrictions.map { |sr| sr.to_s }.join(" #{symbol logic} ")}]"
   end
 
   def symbol(word)
@@ -20,7 +19,16 @@ class SelectionalRestriction
   end
 
   def accepts?(argument)
-    srt = SelectionalRestrictionType.where(value: type).first
-    srt.satisfied_by?(argument)
+    if child_selectional_restrictions.empty?
+      srt = SelectionalRestrictionType.where(value: type).first
+      srt.nil? ? true : srt.satisfied_by?(argument)
+    else
+      csr = child_selectional_restrictions.map { |sr| sr.accepts?(argument) }
+      if logic == "or"
+        csr.any?
+      else
+        csr.all?
+      end
+    end
   end
 end

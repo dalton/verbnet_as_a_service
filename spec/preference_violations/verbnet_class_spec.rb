@@ -8,4 +8,13 @@ describe VerbnetClass do
 
   end
 
+  it "should be searchable by name and member name" do
+    VerbnetClass.search("accept").should ==
+        {
+            members:
+                ['accept-77', 'characterize-29.2-1-1', 'obtain-13.5.2'],
+            classes: ['accept-77']
+        }
+  end
+
 end

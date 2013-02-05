@@ -6,6 +6,6 @@ describe SelectionalRestriction do
     sr.should be_satisfied_by("person")
   end
   it "should be not be satisfied by words that do not match" do
-    sr.should_not be_satisfied_by("rock")
+    sr.should_not be_satisfied_by("phone")
   end
 end

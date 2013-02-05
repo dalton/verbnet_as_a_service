@@ -1,0 +1,9 @@
+%h1 VerbNet Classes
+
+.search
+  = form_tag verbnet_classes_path, method: :get do
+    = text_field_tag :query
+
+- @verbnet_classes.each do |vc|
+  .verbnet_class
+    = link_to vc.name, vc

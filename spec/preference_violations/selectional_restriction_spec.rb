@@ -16,21 +16,21 @@ describe SelectionalRestriction do
     sr.accepts?('wall').should == false
   end
 
-  it "should only accept arguments if they fit it's parent type" do
-    vnc = VerbnetClass.where(name: 'consume-66-1').first
-    sr = vnc.thematic_roles.first.selectional_restriction
+  it "a superclass should be satisfied by all arguments that satisfy a subclass" do
+    sr = SelectionalRestriction.new(value: '+', type: 'natural')
     sr.accepts?('sailor').should == true
     sr.accepts?('dog').should == true
     sr.accepts?('person').should == true
     sr.accepts?('brick').should == true
     sr.accepts?('employee').should == true
+    sr.accepts?('tree').should == true
+    sr.accepts?('arm').should == true
+    sr.accepts?('flower').should == true
     sr.accepts?('boss').should == true
     sr.accepts?('phone').should == false
     sr.accepts?('lamp').should == false
     sr.accepts?('cloud').should == false
     sr.accepts?('dirt').should == false
     sr.accepts?('wall').should == false
-
-
   end
 end
