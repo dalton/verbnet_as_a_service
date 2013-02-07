@@ -2,8 +2,14 @@
 
 .search
   = form_tag verbnet_classes_path, method: :get do
-    = text_field_tag :query
+    = text_field_tag :query, params[:query]
 
+
+%h2 Classes
 - @verbnet_classes.each do |vc|
   .verbnet_class
+    = link_to vc.name, vc
+%h2 Members
+- @verbnet_members.each do |vc|
+  .verbnet_members
     = link_to vc.name, vc
